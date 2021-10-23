@@ -10,18 +10,20 @@ class AppTest {
 
 
 
-    @Test public void testreadNdRandom (){
-        String s =  "Marilyn Monroe";
-        Quotes quotes = new Quotes();
-        String path = "app/src/main/resources/test.json";
-        quotes.read(path);
-        quotes.random();
+    @Test public void testIfIsWriteToFile (){
+        String path ="src/main/resources/data.json";
+        Quotes readFromFile = new Quotes();
+        readFromFile.read(path);
 
+        Api getNewQuote = new Api();
+        getNewQuote.sendGetRequest();
+        Quotes readFromFileWithNewQuote = new Quotes();
+        readFromFileWithNewQuote.read(path);
 
-        String ss = quotes.getQuotes()[0].getAuthor();
+        assertEquals("check if write new lin to thr file",readFromFile.getQuotes().length+1,readFromFileWithNewQuote.getQuotes().length);
 
-        assertTrue(s==ss);
+    }
 
-
+    private void assertEquals(String s, int i, int length) {
     }
 }

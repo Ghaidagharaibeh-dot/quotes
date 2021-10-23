@@ -5,12 +5,8 @@ package quotes;
 
 public class App {
     public static void main(String[] args) {
-        Quotes quotes = new Quotes();
-        String path ="app/src/test/resources/test.json";
-//                "app/src/main/resources/data.json";
+        Api quotes = new Api();
+        quotes.sendGetRequest();
 
-        quotes.read(path);
-        quotes.reandomQuote( quotes.random());
-        System.out.println(quotes.getQuotes()[0].getAuthor());
     }
 }
